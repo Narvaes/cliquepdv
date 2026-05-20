@@ -8,7 +8,7 @@ services:
         # Pass these env vars at build time so Vite can bake them in
         VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
         VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
-    image: cliquepdv-frontend:latest
+    image: cliquepdv-frontend:${APP_VERSION:-latest}
     container_name: cliquepdv_frontend
     restart: always
     ports:
