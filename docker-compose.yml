@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      args:
+        # Pass these env vars at build time so Vite can bake them in
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
+    image: cliquepdv-frontend:latest
+    container_name: cliquepdv_frontend
+    restart: always
+    ports:
+      - "3000:80" # Exposed on port 3000, mapped to 80 in Nginx
+    env_file:
+      - .env
+    # If using a reverse proxy like Traefik or Nginx Proxy Manager,
+    # you can add labels or network configs here.
